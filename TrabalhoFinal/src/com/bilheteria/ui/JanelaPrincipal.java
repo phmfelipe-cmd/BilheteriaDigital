@@ -4,7 +4,6 @@ import com.bilheteria.model.*;
 import com.bilheteria.service.*;
 
 import javax.swing.*;
-import javax.swing.border.AbstractBorder;
 import javax.swing.border.EmptyBorder;
 import javax.swing.table.DefaultTableCellRenderer;
 import javax.swing.table.DefaultTableModel;
@@ -12,7 +11,6 @@ import javax.swing.table.JTableHeader;
 import java.awt.*;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
-import java.awt.geom.RoundRectangle2D;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.*;
@@ -759,7 +757,7 @@ public class JanelaPrincipal extends JFrame {
     private void abrirEstadio(int id) {
         partidaSelecionada = gerenciadorPartidas.buscarPorId(id);
         if (partidaSelecionada == null) return;
-        DateTimeFormatter dtf = DateTimeFormatter.ofPattern("EEE, dd MMM - HH:mm", new Locale("pt", "BR"));
+        DateTimeFormatter dtf = DateTimeFormatter.ofPattern("EEE, dd MMM - HH:mm", Locale.of("pt", "BR"));
         lblConfronto.setText(partidaSelecionada.getCampeonato().toUpperCase() + "  \u2022  " + partidaSelecionada.getNomeConfronto().toUpperCase());
         lblSubConfronto.setText(partidaSelecionada.getEstadio().toUpperCase() + "  \u2022  " + partidaSelecionada.getDataHora().format(dtf).toUpperCase());
         if (!partidaSelecionada.getSetores().isEmpty()) trocarSetor(partidaSelecionada.getSetores().get(0));
@@ -972,7 +970,7 @@ public class JanelaPrincipal extends JFrame {
 
     private void cancelarCarrinho() {
         if (carrinhoAtual == null || carrinhoAtual.getIngressos().isEmpty()) return;
-        if (JOptionPane.showConfirmDialog(this, "Cancelar pedido e liberar assentos (RNF 5.2)?", "Confirmar", JOptionPane.YES_NO_OPTION) == JOptionPane.YES_OPTION) {
+        if (JOptionPane.showConfirmDialog(this, "Cancelar pedido e liberar assentos?", "Confirmar", JOptionPane.YES_NO_OPTION) == JOptionPane.YES_OPTION) {
             for (Ingresso ing : carrinhoAtual.getIngressos()) controladorAssentos.desmarcarAssento(ing.getAssento());
             carrinhoAtual.limparCarrinho(); carrinhoAtual = null;
             atualizarTopBar(); atualizarPainelCarrinho();

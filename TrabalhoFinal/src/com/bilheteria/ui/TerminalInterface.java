@@ -158,7 +158,6 @@ public class TerminalInterface {
         System.out.println(" Setor 3: Cadeiras Centrais Cobertas (R$ 120,00)");
         System.out.println("====================================================");
 
-        List<Setor> setores = controladorAssentos.obterSetoresDisponiveis(partidaEscolhida);
         System.out.print("Informe o número do setor desejado: ");
         int idSetor;
         try {

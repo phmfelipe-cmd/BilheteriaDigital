@@ -1,7 +1,5 @@
 package com.bilheteria.model;
 
-import java.util.ArrayList;
-import java.util.List;
 
 public class Assento {
     private int idAssento;
