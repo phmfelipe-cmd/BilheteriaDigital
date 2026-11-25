@@ -2,7 +2,6 @@ package com.bilheteria;
 
 import com.bilheteria.ui.JanelaPrincipal;
 import com.bilheteria.ui.TerminalInterface;
-
 import javax.swing.*;
 
 public class Main {
@@ -19,7 +18,7 @@ public class Main {
             try {
                 // Aplica o tema nativo do sistema operacional (Windows Look and Feel)
                 UIManager.setLookAndFeel(UIManager.getSystemLookAndFeelClassName());
-            } catch (Exception ignored) {
+            } catch (ClassNotFoundException | IllegalAccessException | InstantiationException | UnsupportedLookAndFeelException ignored) {
             }
 
             JanelaPrincipal janela = new JanelaPrincipal();
